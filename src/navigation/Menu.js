@@ -8,7 +8,6 @@ import {
 } from 'react-native';
 
 import colors from '../constants/colors';
-import sizes from '../constants/sizes';
 import text from '../constants/text';
 import routes from '../constants/routes';
 
@@ -24,7 +23,7 @@ const NavigationMenu = ({handleNavigate}) => {
 
   const windowStyles = {
     width: window.width,
-    height: window.height - sizes.top,
+    height: window.height,
   };
 
   return (

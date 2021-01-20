@@ -7,19 +7,19 @@ import colors from '../../constants/colors';
 import text from '../../constants/text';
 
 const Header = ({title, onLeftPress}) => (
-  <View style={Styles.container}>
-    <View style={Styles.sideButtonContainer}>
+  <View style={styles.container}>
+    <View style={styles.sideButtonContainer}>
       <TouchableOpacity onPress={onLeftPress}>
         <FontAwesomeIcon icon={faBars} size={26} color={colors.navIcon} />
       </TouchableOpacity>
     </View>
-    <View style={Styles.titleContainer}>
-      <Text style={Styles.titleText}>{title?.toUpperCase()}</Text>
+    <View style={styles.titleContainer}>
+      <Text style={styles.titleText}>{title?.toUpperCase()}</Text>
     </View>
   </View>
 );
 
-const Styles = {
+const styles = {
   container: {
     flexDirection: 'row',
     alignItems: 'flex-start',
@@ -35,7 +35,7 @@ const Styles = {
     alignItems: 'flex-start',
   },
   titleText: {
-    ...text.mediumStyles,
+    ...text.sediumStyles,
     color: colors.screenTitle,
     fontSize: 24,
     textAlign: 'center',

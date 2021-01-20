@@ -1,5 +1,11 @@
 import React, {useRef} from 'react';
-import {StyleSheet, View} from 'react-native';
+import {
+  StyleSheet,
+  View,
+  SafeAreaView,
+  StatusBar,
+  useWindowDimensions,
+} from 'react-native';
 import Drawer from 'react-native-drawer';
 
 import Menu from './Menu';
@@ -10,15 +16,21 @@ import sizes from '../constants/sizes';
 const NavigationDrawer = () => {
   const drawer = useRef(null);
   const navigation = useRef(null);
+  const window = useWindowDimensions();
 
   const handleNavigate = (route) => {
     navigation.current?.navigate(route);
     drawer.current?.close();
   };
 
+  const windowStyles = {
+    width: window.width,
+    height: window.height - sizes.top,
+  };
+
   return (
-    <>
-      <View style={styles.topContainer} />
+    <SafeAreaView style={styles.container}>
+      <StatusBar backgroundColor="white" barStyle="dark-content" />
       <Drawer
         ref={drawer}
         type="static"
@@ -35,15 +47,17 @@ const NavigationDrawer = () => {
           },
         })}
         content={<Menu handleNavigate={handleNavigate} />}>
-        <Navigation ref={navigation} drawer={drawer} />
+        <View style={windowStyles}>
+          <Navigation ref={navigation} drawer={drawer} />
+        </View>
       </Drawer>
-    </>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  topContainer: {
-    height: sizes.top,
+  container: {
+    flex: 1,
   },
 });
 
